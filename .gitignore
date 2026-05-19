@@ -1,0 +1,18 @@
+# Build files
+/build
+app/build
+.gradle
+local.properties
+
+# IDE files
+*.iml
+.idea/
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# APK files
+*.apk
+*.aab
+*.ap_
