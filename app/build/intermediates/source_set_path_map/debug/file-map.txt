@@ -1,0 +1,75 @@
+com.okdriver.voiceassistant.app-jetified-savedstate-1.2.1-0 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\01adb9ac62f2c6f8f5effff8cee88109\transformed\jetified-savedstate-1.2.1\res
+com.okdriver.voiceassistant.app-core-1.12.0-1 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\06487d67e67c35d965db8cb9b27bb80a\transformed\core-1.12.0\res
+com.okdriver.voiceassistant.app-material-1.11.0-2 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\094c01db791802e277f8b0ae0bb6a62a\transformed\material-1.11.0\res
+com.okdriver.voiceassistant.app-jetified-savedstate-ktx-1.2.1-3 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\09f5671654a53a45ae9c01b5a359b419\transformed\jetified-savedstate-ktx-1.2.1\res
+com.okdriver.voiceassistant.app-jetified-customview-poolingcontainer-1.0.0-4 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\0a1318901ff92643e9d5874775f082f2\transformed\jetified-customview-poolingcontainer-1.0.0\res
+com.okdriver.voiceassistant.app-jetified-ui-text-release-5 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\0a706c01f99a4e3f62fc78f9bd5fffa5\transformed\jetified-ui-text-release\res
+com.okdriver.voiceassistant.app-jetified-lottie-6.3.0-6 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\1367b8448817685b38dda1c902db7db4\transformed\jetified-lottie-6.3.0\res
+com.okdriver.voiceassistant.app-jetified-foundation-layout-release-7 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\1627cab9980e05155b4951cccd763d42\transformed\jetified-foundation-layout-release\res
+com.okdriver.voiceassistant.app-jetified-runtime-release-8 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\1a7c0f471f1f2f85f44061659bbe89e8\transformed\jetified-runtime-release\res
+com.okdriver.voiceassistant.app-jetified-profileinstaller-1.3.0-9 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\252ddd22f5a0cf5b82c6ce6b7e66c797\transformed\jetified-profileinstaller-1.3.0\res
+com.okdriver.voiceassistant.app-jetified-emoji2-1.3.0-10 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\276606eb706f9cfc9afe7fe4656843e5\transformed\jetified-emoji2-1.3.0\res
+com.okdriver.voiceassistant.app-jetified-ui-tooling-preview-release-11 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\27b37f6d48f4fb126d14c76df5ee907b\transformed\jetified-ui-tooling-preview-release\res
+com.okdriver.voiceassistant.app-jetified-ui-tooling-data-release-12 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\318a6fa56e61d1da6b3ccc59a74c0ce6\transformed\jetified-ui-tooling-data-release\res
+com.okdriver.voiceassistant.app-jetified-ui-util-release-13 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\3a6be46fe4d2715f4eb6f1c9a034ec3a\transformed\jetified-ui-util-release\res
+com.okdriver.voiceassistant.app-jetified-viewpager2-1.0.0-14 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\3d32d4fb2d48665d6e18f6c748575a6f\transformed\jetified-viewpager2-1.0.0\res
+com.okdriver.voiceassistant.app-drawerlayout-1.1.1-15 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\44e814c3384a14ab46bb509fc74e2004\transformed\drawerlayout-1.1.1\res
+com.okdriver.voiceassistant.app-jetified-navigation-compose-2.7.6-16 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\49bbd9a23932e31e0f985811a7e2636e\transformed\jetified-navigation-compose-2.7.6\res
+com.okdriver.voiceassistant.app-jetified-hilt-navigation-1.1.0-17 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\4e99c4436a5e2ab738872b1080fbb53c\transformed\jetified-hilt-navigation-1.1.0\res
+com.okdriver.voiceassistant.app-sqlite-2.4.0-18 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\52717fe507b55e53043ea6c9bf8dd62d\transformed\sqlite-2.4.0\res
+com.okdriver.voiceassistant.app-jetified-emoji2-views-helper-1.3.0-19 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\5396a339240bf17dd619a72103c9ff9b\transformed\jetified-emoji2-views-helper-1.3.0\res
+com.okdriver.voiceassistant.app-jetified-lifecycle-viewmodel-compose-2.6.2-20 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\53d2b83977eb2caf26ceea81b8e9e419\transformed\jetified-lifecycle-viewmodel-compose-2.6.2\res
+com.okdriver.voiceassistant.app-jetified-room-ktx-2.6.1-21 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\56f42c2e57942165ce716727e2a8e1df\transformed\jetified-room-ktx-2.6.1\res
+com.okdriver.voiceassistant.app-jetified-lifecycle-viewmodel-ktx-2.6.2-22 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\58920cad8e948d0e348c4c6cf7228b69\transformed\jetified-lifecycle-viewmodel-ktx-2.6.2\res
+com.okdriver.voiceassistant.app-jetified-material-ripple-release-23 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\5d87fe53a251c8944d98a4af620a4883\transformed\jetified-material-ripple-release\res
+com.okdriver.voiceassistant.app-navigation-common-2.7.6-24 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\5e0802636ed849e0e211af3ee8ddd805\transformed\navigation-common-2.7.6\res
+com.okdriver.voiceassistant.app-navigation-runtime-ktx-2.7.6-25 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\5ffec0dbfcb3f5c527a2ba228dca61bf\transformed\navigation-runtime-ktx-2.7.6\res
+com.okdriver.voiceassistant.app-lifecycle-livedata-core-2.6.2-26 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\66117874c1e487a16fc03145c57de19c\transformed\lifecycle-livedata-core-2.6.2\res
+com.okdriver.voiceassistant.app-appcompat-1.6.1-27 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\69854281d36d5d28c844ef4a2f87bb19\transformed\appcompat-1.6.1\res
+com.okdriver.voiceassistant.app-jetified-ui-unit-release-28 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\6f35da1cb7b8fc5c108a3aa1ad281c17\transformed\jetified-ui-unit-release\res
+com.okdriver.voiceassistant.app-jetified-lifecycle-process-2.6.2-29 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\74540bf64a07638f9759114132be00c9\transformed\jetified-lifecycle-process-2.6.2\res
+com.okdriver.voiceassistant.app-jetified-ui-tooling-release-30 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\7ae76e10c538157e502b1e6a4a2e8562\transformed\jetified-ui-tooling-release\res
+com.okdriver.voiceassistant.app-jetified-ui-graphics-release-31 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\81e1d4f73180735628ec455200ba9115\transformed\jetified-ui-graphics-release\res
+com.okdriver.voiceassistant.app-jetified-activity-1.8.0-32 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\82fb9a346e8b57a3b1e33316bac473d6\transformed\jetified-activity-1.8.0\res
+com.okdriver.voiceassistant.app-jetified-animation-core-release-33 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\8320c5f74e1783c88626c618bee3c9c9\transformed\jetified-animation-core-release\res
+com.okdriver.voiceassistant.app-jetified-material-icons-extended-release-34 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\8788c664c52b0c94058df958cdfd41f0\transformed\jetified-material-icons-extended-release\res
+com.okdriver.voiceassistant.app-jetified-core-ktx-1.12.0-35 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\8d2f4da72168806fec198f127d1f575f\transformed\jetified-core-ktx-1.12.0\res
+com.okdriver.voiceassistant.app-jetified-lifecycle-runtime-ktx-2.6.2-36 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\8e512d76575075a8a2bfac3a7507195e\transformed\jetified-lifecycle-runtime-ktx-2.6.2\res
+com.okdriver.voiceassistant.app-lifecycle-livedata-2.6.2-37 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\905f1c76f0c2371603b23b7dd0aeba14\transformed\lifecycle-livedata-2.6.2\res
+com.okdriver.voiceassistant.app-jetified-ui-release-38 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\91b36c26927d2527d57c22de05affcde\transformed\jetified-ui-release\res
+com.okdriver.voiceassistant.app-jetified-activity-compose-1.8.0-39 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\9509bd03a1a305d14474c74ec1e2c1c7\transformed\jetified-activity-compose-1.8.0\res
+com.okdriver.voiceassistant.app-navigation-runtime-2.7.6-40 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\96304ac5167b295aabd5eb74e00d3a20\transformed\navigation-runtime-2.7.6\res
+com.okdriver.voiceassistant.app-jetified-jna-5.18.1-41 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\9d8e5931d26215ddd2f2e91eb7f641e4\transformed\jetified-jna-5.18.1\res
+com.okdriver.voiceassistant.app-core-runtime-2.2.0-42 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\9f09b09f3f38cfaf944b0342e74cdc49\transformed\core-runtime-2.2.0\res
+com.okdriver.voiceassistant.app-jetified-annotation-experimental-1.4.0-43 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\a208ac24f79338ae6a3aeb707f0e92e5\transformed\jetified-annotation-experimental-1.4.0\res
+com.okdriver.voiceassistant.app-jetified-startup-runtime-1.1.1-44 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\a47c82b8cd2228117b1ff701a025027f\transformed\jetified-startup-runtime-1.1.1\res
+com.okdriver.voiceassistant.app-cardview-1.0.0-45 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\a5caf5c2614ad091f19a818b3ee8beb1\transformed\cardview-1.0.0\res
+com.okdriver.voiceassistant.app-jetified-ui-geometry-release-46 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\a9e9a42d84897d27dbd6fee2c0c1d1e8\transformed\jetified-ui-geometry-release\res
+com.okdriver.voiceassistant.app-jetified-foundation-release-47 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\ac7e121ae867f09839ae84abbc09bba7\transformed\jetified-foundation-release\res
+com.okdriver.voiceassistant.app-jetified-runtime-saveable-release-48 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\bff5fc8d03c28b792c0025aa076fe9fc\transformed\jetified-runtime-saveable-release\res
+com.okdriver.voiceassistant.app-jetified-security-crypto-1.1.0-alpha06-49 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\c07e36baa58a6b19ee3da81bbfbe6834\transformed\jetified-security-crypto-1.1.0-alpha06\res
+com.okdriver.voiceassistant.app-recyclerview-1.1.0-50 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\c117660dbc3cce74995c7e6d95431f43\transformed\recyclerview-1.1.0\res
+com.okdriver.voiceassistant.app-jetified-animation-release-51 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\c42d4eba2ff6dd84ee01ec31a59e4316\transformed\jetified-animation-release\res
+com.okdriver.voiceassistant.app-jetified-material-icons-core-release-52 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\c6b1769860f843ee5c947917d22ed233\transformed\jetified-material-icons-core-release\res
+com.okdriver.voiceassistant.app-room-runtime-2.6.1-53 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\cd8f92d20eb0f060d83631631d9eeef2\transformed\room-runtime-2.6.1\res
+com.okdriver.voiceassistant.app-jetified-hilt-navigation-compose-1.1.0-54 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\cefdf217f09f2b03e088184e183ed4ad\transformed\jetified-hilt-navigation-compose-1.1.0\res
+com.okdriver.voiceassistant.app-coordinatorlayout-1.1.0-55 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\cfec15e018fdf13e2f4e5af9b9ac8935\transformed\coordinatorlayout-1.1.0\res
+com.okdriver.voiceassistant.app-transition-1.2.0-56 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\d097101fe7caca238e062167f22f7ca3\transformed\transition-1.2.0\res
+com.okdriver.voiceassistant.app-fragment-1.5.1-57 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\d29a0280a1ebf0193c5c53c715f4b168\transformed\fragment-1.5.1\res
+com.okdriver.voiceassistant.app-jetified-lifecycle-viewmodel-savedstate-2.6.2-58 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\d413476507de744606c8a8017f4fa2e5\transformed\jetified-lifecycle-viewmodel-savedstate-2.6.2\res
+com.okdriver.voiceassistant.app-jetified-appcompat-resources-1.6.1-59 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\e12a7ebce1153e7553fa4ee6ce7b3155\transformed\jetified-appcompat-resources-1.6.1\res
+com.okdriver.voiceassistant.app-sqlite-framework-2.4.0-60 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\e3a03bdf43cc8c69abc20fb25f1892da\transformed\sqlite-framework-2.4.0\res
+com.okdriver.voiceassistant.app-jetified-activity-ktx-1.8.0-61 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\ee0c21c9163bad09a90b3536a80253ac\transformed\jetified-activity-ktx-1.8.0\res
+com.okdriver.voiceassistant.app-constraintlayout-2.0.1-62 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\f0dd2970b4c46c8fe7e19bcece4293bf\transformed\constraintlayout-2.0.1\res
+com.okdriver.voiceassistant.app-lifecycle-runtime-2.6.2-63 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\f2bd5b0d68d625c5d15b346ffe5a5df3\transformed\lifecycle-runtime-2.6.2\res
+com.okdriver.voiceassistant.app-jetified-material3-release-64 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\f7f90249ccca4eb52dda6c2e6d664342\transformed\jetified-material3-release\res
+com.okdriver.voiceassistant.app-navigation-common-ktx-2.7.6-65 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\f9506a74643b3d22efad78472f907188\transformed\navigation-common-ktx-2.7.6\res
+com.okdriver.voiceassistant.app-jetified-material-release-66 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\fa9599bf2714002460c74de4a283f279\transformed\jetified-material-release\res
+com.okdriver.voiceassistant.app-lifecycle-viewmodel-2.6.2-67 C:\Users\Mehak Kumar\.gradle\caches\transforms-3\fa970cfeabffffb32af6a5dc03e81ebf\transformed\lifecycle-viewmodel-2.6.2\res
+com.okdriver.voiceassistant.app-pngs-68 M:\OK Driver Voice Assistant\app\build\generated\res\pngs\debug
+com.okdriver.voiceassistant.app-resValues-69 M:\OK Driver Voice Assistant\app\build\generated\res\resValues\debug
+com.okdriver.voiceassistant.app-packageDebugResources-70 M:\OK Driver Voice Assistant\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.okdriver.voiceassistant.app-packageDebugResources-71 M:\OK Driver Voice Assistant\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.okdriver.voiceassistant.app-merged_res-72 M:\OK Driver Voice Assistant\app\build\intermediates\merged_res\debug
+com.okdriver.voiceassistant.app-debug-73 M:\OK Driver Voice Assistant\app\src\debug\res
+com.okdriver.voiceassistant.app-main-74 M:\OK Driver Voice Assistant\app\src\main\res

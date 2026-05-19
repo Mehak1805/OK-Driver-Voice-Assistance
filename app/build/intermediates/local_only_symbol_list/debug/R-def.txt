@@ -1,0 +1,15 @@
+R_DEF: Internal format may change without notice
+local
+color black
+drawable ic_launcher_foreground
+drawable widget_background
+id widget_mic_button
+id widget_mic_icon
+id widget_status_text
+layout ok_driver_widget
+layout widget_okdriver
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme.OkDriverVoiceAssistant
+xml ok_driver_widget_info
