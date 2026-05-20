@@ -25,7 +25,7 @@ class SecurePreferencesProvider @Inject constructor(@ApplicationContext private 
         sharedPrefs.edit().putString("groq_api_key", apiKey).apply()
     }
 
-    fun getGroqApiKey(): String? = sharedPrefs.getString("groq_api_key", "null")
+    fun getGroqApiKey(): String? = sharedPrefs.getString("groq_api_key", null)
 
     fun setWakeWordSensitivity(sensitivity: Float) {
         sharedPrefs.edit().putFloat("wake_word_sensitivity", sensitivity).apply()
