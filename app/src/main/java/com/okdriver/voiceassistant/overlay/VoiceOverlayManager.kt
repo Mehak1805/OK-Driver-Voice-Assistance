@@ -1,13 +1,14 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.overlay
 
 import android.content.Context
 import android.graphics.PixelFormat
 import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
+import com.okdriver.voiceassistant.ui.component.VoiceOverlayView
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
-import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Singleton
 class VoiceOverlayManager @Inject constructor(@ApplicationContext private val context: Context) {
@@ -15,7 +16,7 @@ class VoiceOverlayManager @Inject constructor(@ApplicationContext private val co
     private val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     private var overlayView: VoiceOverlayView? = null
     var isShowing = false
-    
+
     private var onCloseCallback: (() -> Unit)? = null
 
     fun setOnCloseCallback(callback: () -> Unit) {
@@ -24,9 +25,9 @@ class VoiceOverlayManager @Inject constructor(@ApplicationContext private val co
 
     fun showOverlay() {
         if (isShowing) return
-        
+
         overlayView = VoiceOverlayView(context)
-        
+
         val layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
@@ -38,13 +39,13 @@ class VoiceOverlayManager @Inject constructor(@ApplicationContext private val co
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
             layoutFlag,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or 
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
             WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
             WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,  // For instant rendering
             PixelFormat.TRANSLUCENT
         ).apply {
-            gravity = android.view.Gravity.BOTTOM
+            gravity = Gravity.BOTTOM
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
             }
@@ -52,7 +53,7 @@ class VoiceOverlayManager @Inject constructor(@ApplicationContext private val co
 
         windowManager.addView(overlayView, params)
         overlayView?.show()
-        
+
         // Setup close listener
         overlayView?.setOnCloseListener {
             isShowing = false
@@ -62,7 +63,7 @@ class VoiceOverlayManager @Inject constructor(@ApplicationContext private val co
             } catch (e: Exception) {}
             overlayView = null
         }
-        
+
         isShowing = true
     }
 
@@ -108,11 +109,11 @@ class VoiceOverlayManager @Inject constructor(@ApplicationContext private val co
     fun updateTranscript(text: String) {
         overlayView?.updateTranscript(text)
     }
-    
+
     fun updateAmplitude(amp: Float) {
         overlayView?.updateAmplitude(amp)
     }
-    
+
     fun updateOverlayStatus(status: String) {
         overlayView?.updateStatus(status)
     }}

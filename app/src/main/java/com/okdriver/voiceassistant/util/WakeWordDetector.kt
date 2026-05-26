@@ -1,25 +1,27 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.util
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import org.vosk.Model
 import org.vosk.Recognizer
+import org.vosk.android.RecognitionListener
 import org.vosk.android.SpeechService
 import org.vosk.android.StorageService
-import org.vosk.android.RecognitionListener
 import javax.inject.Inject
 import javax.inject.Singleton
-import android.os.Handler
-import android.os.Looper
-import android.widget.Toast
+import kotlin.math.abs
 
 data class WakeWordEvent(val timestamp: Long, val confidence: Float)
 
 @Singleton
-class WakeWordDetector @Inject constructor(@ApplicationContext private val context: Context) : RecognitionListener {
+class WakeWordDetector @Inject constructor(@ApplicationContext private val context: Context) :
+    RecognitionListener {
     private val mainHandler = Handler(Looper.getMainLooper())
 
     private var speechService: SpeechService? = null
@@ -141,7 +143,7 @@ class WakeWordDetector @Inject constructor(@ApplicationContext private val conte
         if (now - lastWakeWordTime < 5000) return // 5s debounce — prevents rapid re-triggers
 
         if (!isWakeWord(text)) return
-        
+
         lastWakeWordTime = now
 
         Log.d("WakeWordDetector", "✅ Wake word detected: '$text'")
@@ -216,12 +218,12 @@ class WakeWordDetector @Inject constructor(@ApplicationContext private val conte
      * Adds early termination for distance > 2 to avoid unnecessary computation.
      */
     private fun levenshteinDistance(s1: String, s2: String): Int {
-        if (kotlin.math.abs(s1.length - s2.length) > 2) return Int.MAX_VALUE  // Early exit
-        
+        if (abs(s1.length - s2.length) > 2) return Int.MAX_VALUE  // Early exit
+
         val dp = Array(s1.length + 1) { IntArray(s2.length + 1) }
         for (i in 0..s1.length) dp[i][0] = i
         for (j in 0..s2.length) dp[0][j] = j
-        
+
         for (i in 1..s1.length) {
             for (j in 1..s2.length) {
                 dp[i][j] = if (s1[i-1] == s2[j-1]) dp[i-1][j-1]

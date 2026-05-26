@@ -22,6 +22,10 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.okdriver.voiceassistant.services.VoiceListenerService
+import com.okdriver.voiceassistant.ui.screens.HomeScreen
+import com.okdriver.voiceassistant.ui.screens.SettingsScreen
+import com.okdriver.voiceassistant.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

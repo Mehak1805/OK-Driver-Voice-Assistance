@@ -1,9 +1,11 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.services
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
+import com.okdriver.voiceassistant.services.VoiceListenerService
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,7 +19,7 @@ class BootCompletedReceiver : BroadcastReceiver() {
         if (Intent.ACTION_BOOT_COMPLETED == intent?.action) {
             Log.d("BootCompletedReceiver", "Boot completed – starting VoiceListenerService")
             val serviceIntent = serviceIntentProvider.getIntent(context)
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 context.startForegroundService(serviceIntent)
             } else {
                 context.startService(serviceIntent)

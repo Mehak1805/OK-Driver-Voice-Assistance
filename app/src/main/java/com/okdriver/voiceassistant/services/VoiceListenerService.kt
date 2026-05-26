@@ -1,12 +1,23 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.services
 
-import android.app.*
+import android.R
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.media.AudioManager
 import android.media.ToneGenerator
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.IBinder
+import android.os.Looper
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -17,14 +28,21 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import kotlinx.coroutines.*
-import org.json.JSONObject
-import java.util.*
-import java.util.concurrent.TimeUnit
+import com.okdriver.voiceassistant.MainActivity
+import com.okdriver.voiceassistant.overlay.VoiceOverlayManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 enum class AssistantState {
     SLEEPING,        // waiting for wake word
@@ -50,7 +68,7 @@ class VoiceListenerService : Service() {
     override fun onCreate() {
         super.onCreate()
         handler = Handler(Looper.getMainLooper())
-        
+
         createNotificationChannel()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(
@@ -101,7 +119,8 @@ class VoiceListenerService : Service() {
         Log.d("VLS", "Started wake word listening")
 
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
-            putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+            putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-IN")
             putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
@@ -129,7 +148,8 @@ class VoiceListenerService : Service() {
 
         handler.postDelayed({
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
-                putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                putExtra(
+                    RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                     RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
                 putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-IN")
                 putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en-IN")
@@ -262,7 +282,7 @@ class VoiceListenerService : Service() {
     // ============ WAKE WORD DETECTED ============
     private fun onWakeWordDetected() {
         Log.d("VLS", "Wake word detected!")
-        
+
         // Vibrate
         try {
             val vibrator = getSystemService(Vibrator::class.java)
@@ -281,8 +301,8 @@ class VoiceListenerService : Service() {
         overlayManager.updateTranscript(query)
         Log.d("VLS", "Sending query to Groq: $query")
 
-        val apiKey = getApiKeyFromEncryptedPrefs()
-        if (apiKey.isNullOrBlank()) {
+        val apiKey = getApiKeyFromEncryptedPrefs()?.takeIf { it.isNotBlank() }.orEmpty()
+        if (apiKey.isBlank()) {
             Toast.makeText(this, "No API key set. Please configure in Settings.",
                 Toast.LENGTH_LONG).show()
             speakAndRestart("Please set your Groq API key in Settings.")
@@ -304,7 +324,7 @@ class VoiceListenerService : Service() {
 
                 val body = """
                     {
-                        "model": "llama3-8b-8192",
+                        "model": "openai/gpt-oss-120b",
                         "max_tokens": 150,
                         "messages": [
                             {
@@ -339,7 +359,7 @@ class VoiceListenerService : Service() {
 
                 val responseStr = response.body?.string() ?: throw Exception("Empty response body")
                 Log.d("VLS", "API Response: $responseStr")
-                
+
                 val json = JSONObject(responseStr)
                 val answer = json
                     .getJSONArray("choices")
@@ -352,8 +372,10 @@ class VoiceListenerService : Service() {
 
                 withContext(Dispatchers.Main) {
                     // DEBUG: Show response
-                    Toast.makeText(this@VoiceListenerService, "Response: ${answer.take(50)}...",
-                        Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@VoiceListenerService, "Response: ${answer.take(50)}...",
+                        Toast.LENGTH_LONG
+                    ).show()
                     speakAndRestart(answer)
                 }
 
@@ -501,15 +523,15 @@ class VoiceListenerService : Service() {
         val intent = Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             this, 0, intent,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) 
-                PendingIntent.FLAG_IMMUTABLE 
-            else 
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+                PendingIntent.FLAG_IMMUTABLE
+            else
                 PendingIntent.FLAG_UPDATE_CURRENT
         )
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("okDriver Listening")
             .setContentText("Tap to open dashboard")
-            .setSmallIcon(android.R.drawable.ic_btn_speak_now)
+            .setSmallIcon(R.drawable.ic_btn_speak_now)
             .setContentIntent(pendingIntent)
             .setOngoing(true)
             .build()

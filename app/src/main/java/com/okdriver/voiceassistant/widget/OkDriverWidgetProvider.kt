@@ -1,13 +1,14 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.widget.RemoteViews
-import androidx.core.app.PendingIntentCompat
 import com.okdriver.voiceassistant.R
+import com.okdriver.voiceassistant.services.VoiceListenerService
 
 class OkDriverWidgetProvider : AppWidgetProvider() {
 
@@ -26,7 +27,7 @@ class OkDriverWidgetProvider : AppWidgetProvider() {
                 context,
                 0,
                 intent,
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) PendingIntent.FLAG_MUTABLE else 0
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) PendingIntent.FLAG_MUTABLE else 0
             )
             views.setOnClickPendingIntent(R.id.widget_mic_icon, pendingIntent)
             // Update the widget

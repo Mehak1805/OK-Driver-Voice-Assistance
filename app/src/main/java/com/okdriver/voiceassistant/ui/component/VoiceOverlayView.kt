@@ -1,4 +1,4 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.ui.component
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -10,8 +10,8 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
+import android.view.animation.Animation
 import android.view.animation.OvershootInterpolator
 import android.view.animation.TranslateAnimation
 import android.widget.FrameLayout
@@ -31,14 +31,14 @@ class VoiceOverlayView @JvmOverloads constructor(
     private val orbView: OrbAnimationView
     private val closeButton: TextView
     private val idlePromptText: TextView
-    
+
     private val handler = Handler(Looper.getMainLooper())
     private var typewriterRunnable: Runnable? = null
     private var idlePulseAnimator: ValueAnimator? = null
-    
+
     // Close callback
     private var onCloseListener: (() -> Unit)? = null
-    
+
     init {
         // Full screen scrim — tap to dismiss
         scrim = View(context).apply {
@@ -56,25 +56,25 @@ class VoiceOverlayView @JvmOverloads constructor(
             orientation = LinearLayout.VERTICAL
             gravity = Gravity.CENTER_HORIZONTAL
             setPadding(48, 24, 48, 48)
-            
+
             val bg = GradientDrawable().apply {
                 setColor(Color.parseColor("#E60D1117")) // Semi-transparent dark
                 cornerRadii = floatArrayOf(60f, 60f, 60f, 60f, 0f, 0f, 0f, 0f)
             }
             background = bg
         }
-        
+
         val sheetParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
             gravity = Gravity.BOTTOM
         }
         addView(sheet, sheetParams)
-        
+
         // Top row: drag handle + close button
         val topRow = LinearLayout(context).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
         }
-        
+
         // Drag handle
         val handle = View(context).apply {
             val handleBg = GradientDrawable().apply {
@@ -89,7 +89,7 @@ class VoiceOverlayView @JvmOverloads constructor(
             weight = 1f
             gravity = Gravity.CENTER
         })
-        
+
         // Close button (X)
         closeButton = TextView(context).apply {
             text = "✕"
@@ -101,9 +101,9 @@ class VoiceOverlayView @JvmOverloads constructor(
             }
         }
         topRow.addView(closeButton, LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT))
-        
+
         sheet.addView(topRow, LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
-        
+
         // Branding
         val brand = TextView(context).apply {
             text = "okDriver"
@@ -111,7 +111,7 @@ class VoiceOverlayView @JvmOverloads constructor(
             textSize = 14f
         }
         sheet.addView(brand, LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT))
-        
+
         // Status text
         statusText = TextView(context).apply {
             text = "Listening..."
@@ -123,17 +123,17 @@ class VoiceOverlayView @JvmOverloads constructor(
             topMargin = 8
             bottomMargin = 48
         })
-        
+
         // Animation container
         val animContainer = FrameLayout(context)
         sheet.addView(animContainer, LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 300))
-        
+
         waveformView = WaveformView(context)
         animContainer.addView(waveformView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
-        
+
         orbView = OrbAnimationView(context)
         animContainer.addView(orbView, LayoutParams(200, 200, Gravity.CENTER))
-        
+
         // Texts
         transcriptText = TextView(context).apply {
             text = ""
@@ -145,7 +145,7 @@ class VoiceOverlayView @JvmOverloads constructor(
         sheet.addView(transcriptText, LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
             topMargin = 48
         })
-        
+
         responseText = TextView(context).apply {
             text = ""
             setTextColor(Color.parseColor("#00E5A0"))
@@ -156,7 +156,7 @@ class VoiceOverlayView @JvmOverloads constructor(
             topMargin = 24
             bottomMargin = 24
         })
-        
+
         // Idle prompt (shown in IDLE state)
         idlePromptText = TextView(context).apply {
             text = ""
@@ -168,18 +168,18 @@ class VoiceOverlayView @JvmOverloads constructor(
         sheet.addView(idlePromptText, LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
             bottomMargin = 48
         })
-        
+
         // Setup swipe-down gesture detection
         setupSwipeGesture()
-        
+
         // Ensure initial state
         visibility = View.GONE
     }
-    
+
     private fun setupSwipeGesture() {
-        sheet.setOnTouchListener(object : View.OnTouchListener {
+        sheet.setOnTouchListener(object : OnTouchListener {
             private var startY = 0f
-            
+
             override fun onTouch(v: View, event: MotionEvent): Boolean {
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> startY = event.rawY
@@ -196,11 +196,11 @@ class VoiceOverlayView @JvmOverloads constructor(
     }
 
     fun show() {
-        visibility = View.VISIBLE
-        
+        visibility = VISIBLE
+
         // Animate scrim
         scrim.animate().alpha(1f).setDuration(300).start()
-        
+
         // Slide up sheet
         val slideUp = TranslateAnimation(
             TranslateAnimation.RELATIVE_TO_SELF, 0f,
@@ -216,7 +216,7 @@ class VoiceOverlayView @JvmOverloads constructor(
 
     fun dismiss(onHidden: () -> Unit) {
         scrim.animate().alpha(0f).setDuration(200).start()
-        
+
         val slideDown = TranslateAnimation(
             TranslateAnimation.RELATIVE_TO_SELF, 0f,
             TranslateAnimation.RELATIVE_TO_SELF, 0f,
@@ -225,24 +225,24 @@ class VoiceOverlayView @JvmOverloads constructor(
         ).apply {
             duration = 300
             interpolator = AccelerateInterpolator()
-            setAnimationListener(object : android.view.animation.Animation.AnimationListener {
-                override fun onAnimationStart(a: android.view.animation.Animation?) {}
-                override fun onAnimationRepeat(a: android.view.animation.Animation?) {}
-                override fun onAnimationEnd(a: android.view.animation.Animation?) {
-                    visibility = View.GONE
+            setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(a: Animation?) {}
+                override fun onAnimationRepeat(a: Animation?) {}
+                override fun onAnimationEnd(a: Animation?) {
+                    visibility = GONE
                     onHidden()
                 }
             })
         }
         sheet.startAnimation(slideDown)
     }
-    
+
     private fun dismissOverlay() {
         dismiss {
             onCloseListener?.invoke()
         }
     }
-    
+
     fun setOnCloseListener(listener: () -> Unit) {
         onCloseListener = listener
     }
@@ -253,10 +253,10 @@ class VoiceOverlayView @JvmOverloads constructor(
         responseText.text = ""
         idlePromptText.text = ""
         orbView.stopAnimation()
-        waveformView.visibility = View.VISIBLE
+        waveformView.visibility = VISIBLE
         cancelIdlePulse()
     }
-    
+
     fun updateAmplitude(amp: Float) {
         waveformView.updateAmplitude(amp)
     }
@@ -264,53 +264,53 @@ class VoiceOverlayView @JvmOverloads constructor(
     fun updateTranscript(text: String) {
         transcriptText.text = text
     }
-    
+
     fun updateStatus(status: String) {
         statusText.text = status
     }
 
     fun setStateThinking() {
         statusText.text = "Thinking..."
-        waveformView.visibility = View.INVISIBLE
+        waveformView.visibility = INVISIBLE
         orbView.startAnimation()
         cancelIdlePulse()
     }
 
     fun setStateSleeping() {
         statusText.text = "Waiting for 'Ok Driver'..."
-        waveformView.visibility = View.INVISIBLE
+        waveformView.visibility = INVISIBLE
         orbView.stopAnimation()
         responseText.alpha = 0.4f  // Fade previous response
         idlePromptText.text = ""
-        
+
         typewriterRunnable?.let { handler.removeCallbacks(it) }
         cancelIdlePulse()
     }
-    
+
     fun setStateIdlePulse() {
         statusText.text = "Listening..."
-        waveformView.visibility = View.VISIBLE
+        waveformView.visibility = VISIBLE
         orbView.stopAnimation()
-        
+
         // Start gentle pulse animation for waveform
         startIdlePulse()
-        
+
         // Keep previous response at 40% opacity
         responseText.alpha = 0.4f
-        
+
         typewriterRunnable?.let { handler.removeCallbacks(it) }
     }
-    
+
     fun updateIdlePrompt() {
         idlePromptText.text = "Ask me anything..."
         idlePromptText.alpha = 0.6f
     }
-    
+
     fun showIdleTimeoutWarning() {
         idlePromptText.text = "Still there? Tap to continue"
         idlePromptText.alpha = 0.9f
     }
-    
+
     private fun startIdlePulse() {
         cancelIdlePulse()
         idlePulseAnimator = ValueAnimator.ofFloat(0.4f, 0.8f).apply {
@@ -323,7 +323,7 @@ class VoiceOverlayView @JvmOverloads constructor(
             start()
         }
     }
-    
+
     private fun cancelIdlePulse() {
         idlePulseAnimator?.cancel()
         idlePulseAnimator = null
@@ -333,15 +333,15 @@ class VoiceOverlayView @JvmOverloads constructor(
     fun setStateSpeaking(response: String) {
         statusText.text = "Speaking..."
         orbView.stopAnimation()
-        waveformView.visibility = View.VISIBLE
+        waveformView.visibility = VISIBLE
         idlePromptText.text = ""
         cancelIdlePulse()
-        
+
         // Typewriter effect
         responseText.text = ""
         responseText.alpha = 1.0f
         typewriterRunnable?.let { handler.removeCallbacks(it) }
-        
+
         var index = 0
         typewriterRunnable = object : Runnable {
             override fun run() {

@@ -1,4 +1,4 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.event
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

@@ -1,10 +1,12 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.services
 
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
 import android.media.ToneGenerator
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -12,11 +14,10 @@ import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
-import android.os.Handler
-import android.os.Looper
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -33,7 +34,10 @@ class SpeechToTextManager @Inject constructor(@ApplicationContext private val co
     private val _errorFlow = MutableSharedFlow<Int>(extraBufferCapacity = 5)
     val errorFlow: SharedFlow<Int> = _errorFlow
 
-    private val _rmsFlow = MutableSharedFlow<Float>(extraBufferCapacity = 10, onBufferOverflow = kotlinx.coroutines.channels.BufferOverflow.DROP_OLDEST)
+    private val _rmsFlow = MutableSharedFlow<Float>(
+        extraBufferCapacity = 10,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
     val rmsFlow: SharedFlow<Float> = _rmsFlow
 
     private fun buildRecognitionListener() = object : RecognitionListener {

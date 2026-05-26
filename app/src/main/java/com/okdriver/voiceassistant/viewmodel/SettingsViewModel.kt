@@ -1,7 +1,9 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.okdriver.voiceassistant.db.ConversationDao
+import com.okdriver.voiceassistant.util.SecurePreferencesProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

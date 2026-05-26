@@ -15,14 +15,23 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-        // Enable Jetpack Compose
-        buildFeatures {
-            compose true
+        Properties properties = new Properties()
+        if (project.rootProject.file("local.properties").exists()) {
+            properties.load(project.rootProject.file("local.properties").newDataInputStream())
         }
-        composeOptions {
-            kotlinCompilerExtensionVersion '1.5.4'
-        }
+        buildConfigField "String", "GROQ_API_KEY", "\"${properties.getProperty('GROQ_API_KEY', '')}\""
+
     }
+
+    // Enable generated BuildConfig fields and Jetpack Compose.
+    buildFeatures {
+        compose true
+        buildConfig true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.4'
+    }
+
     buildTypes {
         release {
             minifyEnabled false

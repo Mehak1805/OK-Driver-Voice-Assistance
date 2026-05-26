@@ -32,12 +32,12 @@
         </activity>
 
         <service
-            android:name=".VoiceListenerService"
+            android:name=".services.VoiceListenerService"
             android:exported="false"
             android:foregroundServiceType="microphone" />
 
         <receiver
-            android:name=".BootCompletedReceiver"
+            android:name=".services.BootCompletedReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -45,7 +45,7 @@
         </receiver>
 
         <receiver
-            android:name=".OkDriverWidgetProvider"
+            android:name=".widget.OkDriverWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

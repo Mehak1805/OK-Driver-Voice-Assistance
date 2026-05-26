@@ -1,4 +1,4 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.services
 
 import android.content.Context
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.*
+import java.util.Locale
+import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
 

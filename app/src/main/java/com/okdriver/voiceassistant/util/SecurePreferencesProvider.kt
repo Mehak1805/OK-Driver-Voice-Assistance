@@ -1,4 +1,4 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.util
 
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences

@@ -1,4 +1,4 @@
-package com.okdriver.voiceassistant
+package com.okdriver.voiceassistant.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

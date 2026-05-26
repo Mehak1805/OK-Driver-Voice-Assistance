@@ -2,8 +2,8 @@ package com.okdriver.voiceassistant.di
 
 import android.content.Context
 import androidx.room.Room
-import com.okdriver.voiceassistant.AppDatabase
-import com.okdriver.voiceassistant.ConversationDao
+import com.okdriver.voiceassistant.db.AppDatabase
+import com.okdriver.voiceassistant.db.ConversationDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
